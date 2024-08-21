@@ -46,9 +46,21 @@ public class RestaurantController {
     public ResponseEntity deleteRestaurant(@PathVariable int restaurantId) {
         restaurantService.deleteRestaurant(restaurantId);
 
-
         return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.DELETE_RESTAURANT), HttpStatus.OK);
     }
+
+    @PostMapping("/restaurant/{restaurantId}")
+    public ResponseEntity modifyRestaurant(@PathVariable int restaurantId, @Valid @RequestBody Restaurant restaurant) {
+        restaurant.setId(restaurantId);
+        restaurantService.modifyRestaurant(restaurant);
+
+        if (restaurant.getName().isEmpty()) {
+            return new ResponseEntity(DefaultRes.res(StatusCode.BAD_REQUEST, ResponseMessage.UPDATE_FAIL), HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.UPDATE_RESTAURANT), HttpStatus.OK);
+    }
+
 
 
 }

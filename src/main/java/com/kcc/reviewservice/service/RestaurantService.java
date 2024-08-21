@@ -25,4 +25,8 @@ public class RestaurantService {
     public void deleteRestaurant(int id) {
         restaurantMapper.deleteRestaurant(id);
     }
+
+    public void modifyRestaurant(Restaurant restaurant) {
+        restaurantMapper.modifyRestaurant(restaurant);
+    }
 }

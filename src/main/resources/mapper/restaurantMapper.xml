@@ -31,4 +31,12 @@
     <delete id="deleteRestaurant">
         delete from restaurant where #{id} = id
     </delete>
+
+    <update id="modifyRestaurant">
+        update restaurant
+        set name = #{name},
+        address = #{address},
+        updated_at = sysdate
+        where id = #{id}
+    </update>
 </mapper>

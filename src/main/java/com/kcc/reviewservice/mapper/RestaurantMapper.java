@@ -10,4 +10,5 @@ public interface RestaurantMapper {
     public List<Restaurant> findAllrestaurant();
     public void createRestaurant(Restaurant restaurant);
     public void deleteRestaurant(int id);
+    public void modifyRestaurant(Restaurant restaurant);
 }
