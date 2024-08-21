@@ -1,1 +1,2 @@
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/37d6d4d1-56bd-4d7b-8ebc-8c31f9eb6233/4586818d-3373-45d2-8e1e-83c385d2adff/image.png)
+**맛집 리뷰 서비스 REST API**
+<img width="348" alt="맛집요구분석" src="https://github.com/user-attachments/assets/17ed4dee-2172-4d91-962a-db0f78b20d33">
