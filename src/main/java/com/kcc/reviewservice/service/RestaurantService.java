@@ -21,4 +21,8 @@ public class RestaurantService {
         restaurantMapper.createRestaurant(restaurant);
         return restaurant;
     }
+
+    public void deleteRestaurant(int id) {
+        restaurantMapper.deleteRestaurant(id);
+    }
 }

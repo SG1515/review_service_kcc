@@ -1,9 +1,14 @@
 package com.kcc.reviewservice.controller;
 
+import com.fasterxml.jackson.databind.ser.std.StdKeySerializers;
+import com.kcc.reviewservice.config.DefaultRes;
+import com.kcc.reviewservice.config.ResponseMessage;
+import com.kcc.reviewservice.config.StatusCode;
 import com.kcc.reviewservice.entity.Restaurant;
 import com.kcc.reviewservice.service.RestaurantService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -36,4 +41,14 @@ public class RestaurantController {
 
         return ResponseEntity.created(location).build();
     }
+
+    @GetMapping("/restaurant/{restaurantId}")
+    public ResponseEntity deleteRestaurant(@PathVariable int restaurantId) {
+        restaurantService.deleteRestaurant(restaurantId);
+
+
+        return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.DELETE_RESTAURANT), HttpStatus.OK);
+    }
+
+
 }
