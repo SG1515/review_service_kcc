@@ -1,6 +1,7 @@
-package com.kcc.reviewservice.entity;
+package com.kcc.reviewservice.dto;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
+import com.kcc.reviewservice.entity.RestaurantMenu;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;

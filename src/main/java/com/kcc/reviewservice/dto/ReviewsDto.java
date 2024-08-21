@@ -1,12 +1,11 @@
-package com.kcc.reviewservice.entity;
+package com.kcc.reviewservice.dto;
 
 
-import jakarta.validation.constraints.NotNull;
+import com.kcc.reviewservice.entity.Review;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 @Data

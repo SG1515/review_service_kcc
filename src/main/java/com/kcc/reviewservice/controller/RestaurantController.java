@@ -8,7 +8,7 @@ import com.kcc.reviewservice.config.ResponseMessage;
 import com.kcc.reviewservice.config.StatusCode;
 import com.kcc.reviewservice.entity.Restaurant;
 import com.kcc.reviewservice.entity.Review;
-import com.kcc.reviewservice.entity.ReviewsDto;
+import com.kcc.reviewservice.dto.ReviewsDto;
 import com.kcc.reviewservice.service.RestaurantService;
 import com.kcc.reviewservice.service.ReviewService;
 import jakarta.validation.Valid;
