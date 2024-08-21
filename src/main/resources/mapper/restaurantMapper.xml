@@ -4,4 +4,22 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.kcc.reviewservice.mapper.RestaurantMapper">
+
+    <resultMap id="restaurantMap" type="Restaurant">
+        <id property="id" column="rest_id"/>
+        <result property="name" column="rest_name"/>
+        <result property="address" column="address"/>
+        <result property="created_at" column="rest_created_at"/>
+        <result property="updated_at" column="rest_updated_at"/>
+    </resultMap>
+
+    <select id="findAllrestaurant" resultMap="restaurantMap">
+        select
+            id as rest_id,
+            name as rest_name,
+            address,
+            created_at as rest_created_at,
+            updated_at as rest_updated_at
+        from restaurant
+    </select>
 </mapper>

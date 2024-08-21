@@ -17,4 +17,4 @@ spring:
     password: 1234
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.kcc.restfulservice.bean
+  type-aliases-package: com.kcc.reviewservice.entity
