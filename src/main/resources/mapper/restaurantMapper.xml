@@ -11,6 +11,15 @@
         <result property="address" column="address"/>
         <result property="created_at" column="rest_created_at"/>
         <result property="updated_at" column="rest_updated_at"/>
+        <collection property="menus" resultMap="menuMap"/>
+    </resultMap>
+    
+    <resultMap id="restaurantMenuMap" type="RestaurantMenu">
+        <id property="id" column="menu_id"/>
+        <result property="name" column="menu_name"/>
+        <result property="price" column="price"/>
+        <result property="created_at" column="menu_created_at"/>
+        <result property="updated_at" column="menu_updated_at"/>
     </resultMap>
 
     <select id="findAllrestaurant" resultMap="restaurantMap">
