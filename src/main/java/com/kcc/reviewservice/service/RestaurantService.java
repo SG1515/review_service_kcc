@@ -1,6 +1,7 @@
 package com.kcc.reviewservice.service;
 
 import com.kcc.reviewservice.entity.Restaurant;
+import com.kcc.reviewservice.entity.Review;
 import com.kcc.reviewservice.mapper.RestaurantMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,5 +34,14 @@ public class RestaurantService {
     public List<Restaurant> infoRestaurant(int id) {
 
         return  restaurantMapper.infoRestaurant(id);
+    }
+
+    public int avgScore(int id) {
+
+        return restaurantMapper.avgScore(id);
+    }
+
+    public List<Review> reviews(int id){
+        return restaurantMapper.reviews(id);
     }
 }

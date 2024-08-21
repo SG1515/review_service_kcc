@@ -21,15 +21,7 @@
     <delete id="deleteReview">
         delete from review where #{id} = id
     </delete>
-<!--    <select id="restaurantReview" resultMap="restaurantMap">-->
-<!--        select-->
-<!--            id as rest_id,-->
-<!--            name as rest_name,-->
-<!--            address,-->
-<!--            created_at as rest_created_at,-->
-<!--            updated_at as rest_updated_at-->
-<!--        from restaurant-->
-<!--    </select>-->
+
 
 
 </mapper>

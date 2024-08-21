@@ -1,7 +1,6 @@
-package com.kcc.reviewservice.dto;
+package com.kcc.reviewservice.entity;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import com.kcc.reviewservice.entity.RestaurantMenu;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -16,6 +15,8 @@ import java.util.List;
 @NoArgsConstructor
 @JsonFilter("restInfo")
 public class RestaurantDto {
+
+
     private int id;
 
     @NotNull

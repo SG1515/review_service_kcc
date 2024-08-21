@@ -37,4 +37,5 @@ public class ReviewController {
         return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.REVIEW_DELETE, "리뷰 글번호 : " + reviewNum + "가 삭제되었습니다."), HttpStatus.OK);
     }
 
+
 }

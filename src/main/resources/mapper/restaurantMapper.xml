@@ -24,6 +24,14 @@
         <result property="updated_at" column="menu_updated_at"/>
     </resultMap>
 
+    <resultMap id="reviewMap" type="Review">
+        <id property="id" column="review_id"/>
+        <result property="restaurant_id" column="review_restaurant_id"/>
+        <result property="content" column="content"/>
+        <result property="score" column="score"/>
+        <result property="created_at" column="review_created_at"/>
+    </resultMap>
+
     <select id="findAllrestaurant" resultMap="restaurantMap">
         select
             id as rest_id,
@@ -68,4 +76,22 @@
         updated_at = sysdate
         where id = #{id}
     </update>
+
+    <select id="avgScore" resultType="int">
+        select
+            floor(avg(score)) as avgScore
+        from review
+        where restaurant_id = #{id}
+    </select>
+
+    <select id="reviews" resultMap="reviewMap">
+        select id as review_id,
+               restaurant_id as review_restaurant_id,
+               content,
+               score,
+               created_at as review_created_at
+        from review
+        where #{id} = restaurant_id
+    </select>
+
 </mapper>

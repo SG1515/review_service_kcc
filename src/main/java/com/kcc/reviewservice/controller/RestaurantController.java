@@ -6,8 +6,9 @@ import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.kcc.reviewservice.config.DefaultRes;
 import com.kcc.reviewservice.config.ResponseMessage;
 import com.kcc.reviewservice.config.StatusCode;
-import com.kcc.reviewservice.dto.RestaurantDto;
 import com.kcc.reviewservice.entity.Restaurant;
+import com.kcc.reviewservice.entity.Review;
+import com.kcc.reviewservice.entity.ReviewsDto;
 import com.kcc.reviewservice.service.RestaurantService;
 import com.kcc.reviewservice.service.ReviewService;
 import jakarta.validation.Valid;
@@ -24,7 +25,7 @@ import java.util.List;
 public class RestaurantController {
 
     private final ReviewService reviewService;
-    private RestaurantService restaurantService;
+    private final RestaurantService restaurantService;
 
     public RestaurantController(RestaurantService restaurantService, ReviewService reviewService) {
         this.restaurantService = restaurantService;
@@ -82,8 +83,16 @@ public class RestaurantController {
     }
 
 
+    @GetMapping("/restaurant/{restaurantId}/reviews")
+    public ReviewsDto findAllReviews(@PathVariable int restaurantId) {
+
+        int avgScore = restaurantService.avgScore(restaurantId);
+        List<Review> reviews = restaurantService.reviews(restaurantId);
 
 
+        ReviewsDto reviewsDto = new ReviewsDto(avgScore, reviews);
+        return reviewsDto;
+    }
 
 
 
