@@ -16,4 +16,9 @@ public class RestaurantService {
     public List<Restaurant> getAllRestaurants() {
         return restaurantMapper.findAllrestaurant();
     }
+
+    public Restaurant createRestaurant(Restaurant restaurant) {
+        restaurantMapper.createRestaurant(restaurant);
+        return restaurant;
+    }
 }

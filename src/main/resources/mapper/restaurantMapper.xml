@@ -22,4 +22,9 @@
             updated_at as rest_updated_at
         from restaurant
     </select>
+
+    <insert id="createRestaurant" parameterType="Restaurant">
+        insert into restaurant(id, name, address, created_at, updated_at)
+        values(restaurant_seq.nextval, #{name}, #{address}, sysdate, sysdate)
+    </insert>
 </mapper>

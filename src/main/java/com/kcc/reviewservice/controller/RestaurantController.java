@@ -2,9 +2,12 @@ package com.kcc.reviewservice.controller;
 
 import com.kcc.reviewservice.entity.Restaurant;
 import com.kcc.reviewservice.service.RestaurantService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -19,5 +22,14 @@ public class RestaurantController {
     @GetMapping("/restaurants")
     public List<Restaurant> findAllRestaurants() {
         return restaurantService.getAllRestaurants();
+    }
+
+    @PostMapping("/restaurants")
+    public ResponseEntity createRestaurant(@Valid @RequestBody Restaurant restaurant) {
+        restaurantService.createRestaurant(restaurant);
+
+        URI location = URI.create("/restaurants/" + restaurant.getId());
+
+        return new ResponseEntity(HttpStatus.OK);
     }
 }
