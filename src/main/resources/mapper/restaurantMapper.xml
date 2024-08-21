@@ -12,6 +12,7 @@
         <result property="created_at" column="rest_created_at"/>
         <result property="updated_at" column="rest_updated_at"/>
         <collection property="menus" resultMap="menuMap"/>
+        <collection property="reviews" resultMap="reviewMap"/>
     </resultMap>
     
     <resultMap id="menuMap" type="RestaurantMenu">

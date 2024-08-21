@@ -8,6 +8,6 @@ public class ResponseMessage {
     public static final String UPDATE_FAIL = "맛집 업데이트 실패";
     public static final String UPDATE_RESTAURANT = "맛집 수정 성공";
     public static final String DELETE_RESTAURANT = "맛집 삭제 성공";
-    public static final String INTERNAL_SERVER_ERROR = "서버 내부 에러";
-    public static final String DB_ERROR = "데이터베이스 에러";
+    public static final String REVIEW_OK = "리뷰 작성 성공";
+    public static final String REVIEW_DELETE = "리뷰 삭세 성공";
 }

@@ -1,25 +1,21 @@
-package com.kcc.reviewservice.entity;
+package com.kcc.reviewservice.dto;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.kcc.reviewservice.entity.RestaurantMenu;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
-@Data
+@Getter
 @NoArgsConstructor
-public class Restaurant implements Serializable {
-
-
+@JsonFilter("restInfo")
+public class RestaurantDto {
     private int id;
 
     @NotNull
@@ -34,13 +30,14 @@ public class Restaurant implements Serializable {
     private Timestamp updated_at;
 
     private List<RestaurantMenu> menus;
-    private List<Review> reviews;
 
-    public Restaurant(int id, String name, String address, Timestamp created_at, Timestamp updated_at) {
+    @Builder
+    public RestaurantDto(int id, String name, String address, Timestamp created_at, Timestamp updated_at) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.created_at = created_at;
         this.updated_at = updated_at;
     }
+
 }

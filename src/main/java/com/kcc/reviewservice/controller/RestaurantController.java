@@ -1,13 +1,19 @@
 package com.kcc.reviewservice.controller;
 
+import com.fasterxml.jackson.databind.ser.FilterProvider;
+import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
+import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.kcc.reviewservice.config.DefaultRes;
 import com.kcc.reviewservice.config.ResponseMessage;
 import com.kcc.reviewservice.config.StatusCode;
+import com.kcc.reviewservice.dto.RestaurantDto;
 import com.kcc.reviewservice.entity.Restaurant;
 import com.kcc.reviewservice.service.RestaurantService;
+import com.kcc.reviewservice.service.ReviewService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -17,15 +23,26 @@ import java.util.List;
 @RestController
 public class RestaurantController {
 
+    private final ReviewService reviewService;
     private RestaurantService restaurantService;
 
-    public RestaurantController(RestaurantService restaurantService) {
+    public RestaurantController(RestaurantService restaurantService, ReviewService reviewService) {
         this.restaurantService = restaurantService;
+        this.reviewService = reviewService;
     }
 
     @GetMapping("/restaurants")
-    public List<Restaurant> findAllRestaurants() {
-        return restaurantService.getAllRestaurants();
+    public MappingJacksonValue findAllRestaurants() {
+
+        List<Restaurant> allRestaurants = restaurantService.getAllRestaurants();
+        //필터를 어떤 것만 할 것인지 select
+        SimpleBeanPropertyFilter filter =  SimpleBeanPropertyFilter.filterOutAllExcept("id", "name", "address", "created_at", "updated_at");
+        //필터 등록하기.
+        FilterProvider filterProvider = new SimpleFilterProvider().addFilter("restInfo", filter);
+        MappingJacksonValue mapping = new MappingJacksonValue(allRestaurants);
+        mapping.setFilters(filterProvider);
+
+        return mapping;
     }
 
     @GetMapping("/restaurant/{id}")
@@ -63,6 +80,7 @@ public class RestaurantController {
 
         return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.UPDATE_RESTAURANT), HttpStatus.OK);
     }
+
 
 
 
