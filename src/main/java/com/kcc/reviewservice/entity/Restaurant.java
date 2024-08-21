@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 @Data
 @NoArgsConstructor
@@ -25,7 +26,7 @@ public class Restaurant implements Serializable {
     @Pattern(regexp = "(([가-힣]|\\\\d)+(시 ))+(([가-힣]|\\\\d)+(구))")
     private String address;
 
-    private String created_at;
+    private Timestamp created_at;
 
-    private String updated_at;
+    private Timestamp updated_at;
 }

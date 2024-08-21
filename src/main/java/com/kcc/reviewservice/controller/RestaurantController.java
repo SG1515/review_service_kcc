@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
@@ -26,10 +27,13 @@ public class RestaurantController {
 
     @PostMapping("/restaurants")
     public ResponseEntity createRestaurant(@Valid @RequestBody Restaurant restaurant) {
-        restaurantService.createRestaurant(restaurant);
+        Restaurant savedRestaurant = restaurantService.createRestaurant(restaurant);
 
-        URI location = URI.create("/restaurants/" + restaurant.getId());
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(savedRestaurant.getId())
+                .toUri();
 
-        return new ResponseEntity(HttpStatus.OK);
+        return ResponseEntity.created(location).build();
     }
 }
