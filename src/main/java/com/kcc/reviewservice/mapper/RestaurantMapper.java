@@ -11,4 +11,5 @@ public interface RestaurantMapper {
     public void createRestaurant(Restaurant restaurant);
     public void deleteRestaurant(int id);
     public void modifyRestaurant(Restaurant restaurant);
+    public List<Restaurant> infoRestaurant(int id);
 }

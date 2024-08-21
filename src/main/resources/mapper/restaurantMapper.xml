@@ -14,8 +14,9 @@
         <collection property="menus" resultMap="menuMap"/>
     </resultMap>
     
-    <resultMap id="restaurantMenuMap" type="RestaurantMenu">
+    <resultMap id="menuMap" type="RestaurantMenu">
         <id property="id" column="menu_id"/>
+        <result property="restaurant_id" column="restaurant_id"/>
         <result property="name" column="menu_name"/>
         <result property="price" column="price"/>
         <result property="created_at" column="menu_created_at"/>
@@ -30,6 +31,24 @@
             created_at as rest_created_at,
             updated_at as rest_updated_at
         from restaurant
+    </select>
+
+
+    <select id="infoRestaurant" resultMap="restaurantMap">
+        select r.id         as rest_id,
+               r.name       as rest_name,
+               r.address    as address,
+               r.created_at as rest_created_at,
+               r.updated_at as rest_updated_at,
+               m.id         as menu_id,
+               m.name       as menu_name,
+               m.price      as price,
+               m.created_at as menu_created_at,
+               m.updated_at as menu_updated_at
+        from restaurant r
+        left outer join restaurant_menu m
+        on r.id = m.restaurant_id
+        where r.id = #{id}
     </select>
 
     <insert id="createRestaurant" parameterType="Restaurant">

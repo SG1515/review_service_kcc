@@ -29,4 +29,9 @@ public class RestaurantService {
     public void modifyRestaurant(Restaurant restaurant) {
         restaurantMapper.modifyRestaurant(restaurant);
     }
+
+    public List<Restaurant> infoRestaurant(int id) {
+
+        return  restaurantMapper.infoRestaurant(id);
+    }
 }

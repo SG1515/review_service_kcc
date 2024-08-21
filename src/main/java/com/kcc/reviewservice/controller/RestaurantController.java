@@ -28,6 +28,11 @@ public class RestaurantController {
         return restaurantService.getAllRestaurants();
     }
 
+    @GetMapping("/restaurant/{id}")
+    public List<Restaurant> infoRestaurant(@PathVariable int id) {
+        return restaurantService.infoRestaurant(id);
+    }
+
     @PostMapping("/restaurants")
     public ResponseEntity createRestaurant(@Valid @RequestBody Restaurant restaurant) {
         Restaurant savedRestaurant = restaurantService.createRestaurant(restaurant);
@@ -58,6 +63,9 @@ public class RestaurantController {
 
         return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.UPDATE_RESTAURANT), HttpStatus.OK);
     }
+
+
+
 
 
 

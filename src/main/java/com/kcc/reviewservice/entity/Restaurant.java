@@ -1,5 +1,6 @@
 package com.kcc.reviewservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -10,10 +11,12 @@ import lombok.NoArgsConstructor;
 import java.io.Serial;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+
 public class Restaurant implements Serializable {
 
 
@@ -29,4 +32,14 @@ public class Restaurant implements Serializable {
     private Timestamp created_at;
 
     private Timestamp updated_at;
+
+    private List<RestaurantMenu> menus;
+
+    public Restaurant(int id, String name, String address, Timestamp created_at, Timestamp updated_at) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.created_at = created_at;
+        this.updated_at = updated_at;
+    }
 }
